@@ -1,0 +1,693 @@
+h1,h2,h3,h4,h5,ul,li,hr,p,form {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+header {
+  padding: 30px 0;
+}
+
+header .navbar-brand {
+  background-color: #eee;
+}
+
+#wrapper {
+  min-height: 1024px;
+}
+
+#navbar {
+  margin: 0;
+  border: none;
+}
+
+#navbar.affix {
+  top: 0;
+  width: 100%;
+}
+
+#navbar .navbar-nav li a {
+  padding-top: 17px;
+}
+
+#navbar .navbar-nav .active a {
+  border-bottom: 2px solid #e74c3c;
+}
+
+footer {
+  margin-top: 80px;
+}
+
+footer .sub-footer {
+  padding: 40px 0;
+  background-color: #222;
+}
+
+footer .footer {
+  padding: 20px 0;
+  background-color: #111;
+}
+
+/**/
+.feature {
+  margin: 60px 0;
+}
+
+/**/
+.card {
+  margin: -10px;
+}
+
+.card li {
+  float: left;
+  width: 25%;
+  padding: 10px;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .card li {
+    width: 50%;
+  }
+}
+
+@media (max-width: 767px) {
+  .card li {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .card li {
+    width: 100%;
+  }
+}
+
+.card .item {
+  overflow: hidden;
+}
+
+.card .image {
+  overflow: hidden;
+  position: relative;
+}
+
+.card .image img {
+  width: 100%;
+}
+
+.card .author {
+  position: absolute;
+  color: #fff;
+  top: -70px;
+  width: 100%;
+  padding: 8px 10px;
+  background-color: rgba(10, 10, 10, 0.4);
+  transition: all 0.4s ease-in-out;
+}
+
+.card .author img {
+  float: left;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.card .author .profile {
+  overflow: hidden;
+}
+
+.card .author .profile a {
+  font-weight: bold;
+  color: #fff;
+}
+
+.card .author .profile .position {
+  font-size: 13px;
+  font-style: italic;
+}
+
+.card .tag {
+  overflow: hidden;
+}
+
+.card .tag li {
+  margin: 0;
+  padding: 0;
+  border: none;
+  width: auto;
+}
+
+.card .tag li a {
+  color: #e74c3c;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.card .tag li:after {
+  content: "|";
+  color: #777;
+  margin: 0 5px;
+}
+
+.card .tag li:last-child:after {
+  content: "";
+  margin: 0;
+}
+
+.card .footer {
+  padding: 15px 0;
+}
+
+.card .footer h4 {
+  font-size: 16px;
+  padding: 10px 0;
+  line-height: 22px;
+}
+
+.card .item:hover .author {
+  top: 0;
+  transition: all 0.4s ease-in-out;
+}
+
+/**/
+.fb-page {
+  margin: 40px 0;
+}
+
+/**/
+section {
+  overflow: hidden;
+  padding: 5px 0;
+}
+
+section h2 {
+  float: left;
+}
+
+section h3 {
+  float: left;
+  font-size: 24px;
+  margin-right: 10px;
+  font-family: 'Open Sans', 'Kanit', sans-serif;
+}
+
+section .striped-line {
+  overflow: hidden;
+  height: 12px;
+  margin-top: 8px;
+  background: url('/static/img/striped-line.png');
+}
+
+section .fb-like {
+  float: right;
+  margin-top: 15px;
+}
+
+/**/
+.separator {
+  border: 0;
+  height: 5px;
+}
+
+.separator-subsection {
+  background: url('/static/img/striped.png') top left repeat;
+}
+
+/**/
+.media-list {
+  margin: 40px 0;
+}
+
+.media-list li {
+  overflow: hidden;
+  padding: 20px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.media-list li:last-child {
+  border-bottom: none;
+}
+
+.media-list li img {
+  float: right;
+  width: 110px;
+  margin-left: 10px;
+}
+
+.media-list .item {
+  overflow: hidden;
+}
+
+.media-list .item h4 {
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.media-list .item .subtext {
+  margin-bottom: 5px;
+}
+
+.media-list .item .subtext a {
+  color: #e74c3c;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.media-list .item .small {
+  color: #777;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+/**/
+.review {
+  margin: 40px 0;
+}
+
+.review .image {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.review .image img {
+  width: 250px;
+}
+
+.review .item h4 {
+  padding: 10px 0;
+  line-height: 26px;
+}
+
+.review .item .subtext {
+  color: #777;
+  overflow: hidden;
+}
+
+.review .item .preview {
+  padding: 20px 0;
+}
+
+.review .item .footer {
+  overflow: hidden;
+  line-height: 40px;
+}
+
+.review .item .footer .btn-danger {
+  border: none;
+  border-radius: 0;
+  line-height: 28px;
+}
+
+.review .item .footer .price strong {
+  font-size: 16px;
+}
+
+.review .rating .fa {
+  font-size: 14px;
+}
+
+.review .rating .fa-fw {
+  width: 15px;
+}
+
+.review .rating .fa-star,
+.review .rating .fa-star-half-o {
+  color: #f39c12;
+}
+
+/**/
+.categories {
+  margin: 35px 0;
+}
+
+.categories li {
+  padding: 5px 0;
+}
+
+.categories li .fa {
+  margin-right: 5px;
+}
+
+/**/
+.tags {
+  margin: 40px 0;
+  overflow: hidden;
+}
+
+.tags li {
+  float: left;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  padding: 5px 10px;
+  background-color: #eee;
+}
+
+.tags li a {
+  color: #555;
+  font-style: italic;
+  text-decoration: none;
+}
+
+.tags li:hover {
+  background-color: #e74c3c;
+}
+
+.tags li:hover a {
+  color: #fff;
+}
+
+/**/
+.post {
+  margin-bottom: 50px;
+}
+
+.post .tag {
+  overflow: hidden;
+}
+
+.post .tag li {
+  float: left;
+  margin: 0;
+  padding: 0;
+  border: none;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.post .tag li a {
+  color: #e74c3c;
+}
+
+.post .tag li:after {
+  content: "|";
+  color: #777;
+  margin: 0 5px;
+}
+
+.post .tag li:last-child:after {
+  margin: 0;
+  content: "";
+}
+
+.post li {
+  padding-top: 50px;
+}
+
+.post hr {
+  margin-top: 45px;
+}
+
+.post .content {
+  overflow: hidden;
+}
+
+.post .image {
+  float: left;
+  color: #fff;
+  position: relative;
+  width: 270px;
+  margin-right: 30px;
+  transition: opacity 0.2s ease;
+}
+
+.post .image img {
+  width: 100%;
+}
+
+.post .image .image-icon {
+  display: none;
+  position: absolute;
+  width: 100%;
+  top: 40%;
+  text-align: center;
+}
+
+.post .image:hover {
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.post .image:hover .image-icon {
+  display: block;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .post .image {
+    float: none;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  .post .image {
+    float: none;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .post .image {
+    float: none;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+.post .item {
+  overflow: hidden;
+}
+
+.post .item h4 {
+  padding: 15px 0;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.post .item .preview {
+  font-size: 15px;
+}
+
+.post .footer {
+  overflow: hidden;
+  margin-top: 30px;
+}
+
+.post .footer a {
+  color: #e74c3c;
+}
+
+.post .footer .info {
+  margin-right: 10px;
+  font-style: italic;
+}
+
+.post .footer .info a {
+  color: #333;
+  text-decoration: none;
+}
+
+/**/
+.paging {
+  text-align: center;
+}
+
+.paging .pagination {}
+
+.paging .pagination li a {
+  border-radius: 0;
+  color: #555;
+  margin: 10px;
+  padding: 8px 15px;
+}
+
+.paging .pagination li:hover a {
+  background-color: #fff;
+}
+
+.paging .pagination .active a {
+  border-color: #e74c3c !important;
+  color: #e74c3c !important;
+  background-color: #fff !important;
+}
+
+.paging .pagination li:first-child a {
+  border-radius: 0;
+}
+
+.paging .pagination li:last-child a {
+  border-radius: 0;
+}
+
+
+/**/
+.breadcrumb-holder {
+  padding: 20px 0;
+  background-color: #f5f5f5;
+}
+
+.breadcrumb-holder a {
+  color: #333;
+}
+
+.breadcrumb-holder .breadcrumb {
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+}
+
+.breadcrumb-holder .breadcrumb > li + li:before {
+  padding: 0 5px;
+  content: "»";
+}
+
+/**/
+.comment {
+  background-color: #f7f7f7;
+  margin: 40px 0;
+}
+
+/**/
+.wrapper {
+  line-height: 24px;
+  margin-bottom: 30px;
+}
+
+.wrapper .wrapper-subtext .info {
+  margin-right: 20px;
+}
+
+.wrapper .wrapper-subtext a {
+  color: #e74c3c;
+  font-style: italic;
+}
+
+.wrapper .wrapper-title {
+  text-align: center;
+}
+
+.wrapper .wrapper-title img {
+  margin: 60px 0 40px 0;
+  max-width: 500px;
+}
+
+.wrapper .wrapper-content {
+  font-size: 16px;
+  line-height: 26px;
+  font-family: 'Georgia', 'Open Sans', sans-serif;
+}
+
+.wrapper .wrapper-content p {
+  padding: 15px 0;
+}
+
+.wrapper .wrapper-content img {
+  max-width: 340px;
+  margin: 40px 0 40px 20px;
+}
+
+.wrapper .wrapper-content ul {
+  margin: 20px 0;
+  padding-left: 40px;
+}
+
+.wrapper .wrapper-content ul li {
+  line-height: 30px;
+  list-style-type: disc;
+}
+
+.wrapper .wrapper-content a {
+  color: #e74c3c;
+}
+
+.wrapper h1 {
+  font-size: 34px;
+  margin: 15px 0;
+  padding: 15px 0;
+}
+
+.wrapper h2 {
+  margin: 10px 0;
+  padding: 10px 0;
+  font-size: 30px;
+}
+
+.wrapper h3 {
+  font-size: 26px;
+  margin: 10px 0;
+  padding: 10px 0;
+}
+
+.wrapper h4 {
+  font-size: 22px;
+  margin: 5px 0;
+  padding: 10px 0;
+}
+
+.wrapper .table {
+  margin: 30px 0;
+}
+
+.wrapper pre {
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  margin: 30px 0;
+}
+
+.wrapper pre code {
+  font-size: 14px;
+}
+
+.wrapper blockquote {
+  margin: 30px 0;
+  font-size: 16px;
+  border-color: #e74c3c;
+  background-color: #f7f7f7;
+}
+
+/**/
+.writer {
+  overflow: hidden;
+  margin: 30px 0;
+}
+
+.writer img {
+  float: left;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-right: 40px;
+  border: 3px solid #ddd;
+}
+
+.writer h3 {
+  padding: 5px 0;
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
+.writer .profile {
+  overflow: hidden;
+  line-height: 20px;
+}
+
+.writer .profile h4 {
+  margin: 0;
+  padding: 0;
+}
+
+.writer .profile .position {
+  color: #777;
+  margin: 15px 0;
+}
+
+.writer .profile a {
+  color: #e74c3c;
+}

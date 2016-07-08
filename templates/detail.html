@@ -1,0 +1,105 @@
+{% extends "master/base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+<!-- load social plugins -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/th_TH/sdk.js#xfbml=1&version=v2.6&appId=1095075863864138";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<div class="breadcrumb-holder">
+  <div class="container">
+    <ol class="breadcrumb">
+      <li><a href="{% url 'index' %}">หน้าหลัก</a></li>
+      <li class="active">{{ post.title }}</li>
+    </ol>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <section style="margin: 35px 0">
+        <h2>{{ post.title }}</h2>
+        <div class="fb-like" data-href="#" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+      </section>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <div class="wrapper">
+        <div class="wrapper-subtext">
+          <span class="info">โดย: <a href="{% url 'index' %}?authorid={{ post.author.id }}">{{ post.author.name }}</a></span>
+          <span class="info ">หมวดหมู่: <a href="{% url 'index' %}?cateid={{ post.category.id }}">{{ post.category.name }}</a></span>
+          <span class="info pull-right">วันที่ปรับปรุง: <i>{{ post.updated|date:'Y-m-d H:i' }}</i></span>
+        </div>
+        <div class="wrapper-title">
+          <img src="{% static post.image.url %}">
+        </div>
+        <div class="wrapper-content">
+          <!-- title -->
+          <p>
+            {{ post.preview }}
+          </p>
+          <!-- description -->
+          {{ post.description|safe }}
+        </div>
+      </div>
+      <hr class="separator separator-subsection">
+      <div class="writer">
+        <h3>เกี่ยวกับผู้เขียน</h3>
+        <img src="{% static post.author.image.url %}">
+        <div class="profile">
+          <h4>{{ post.author.name }}</h4>
+          <div class="position">
+            {{ post.author.description }}
+            <div style="margin-top: 20px">
+              <a href="#">ดูประวัติแบบเต็ม</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr class="separator separator-subsection">
+      <div class="comment">
+        <div class="fb-comments" data-href="http://{{ request.get_host }}{{ request.get_full_path }}" data-width="100%" data-numposts="5"></div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <section>
+        <h3>บทความที่เกี่ยวข้อง</h3>
+        <div class="striped-line"></div>
+      </section>
+      <ul class="media-list">
+        {% for p in related_posts %}
+        <li>
+          <img src="{% static p.image.url %}">
+          <div class="item">
+            <div class="subtext">
+              <a href="#">{{ p.category.name }}</a>
+            </div>
+            <h4><a href="{% url 'detail' p.slug %}">{{ p.title }}</a></h4>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+      <section>
+        <h3>ป้ายกำกับ</h3>
+        <div class="striped-line"></div>
+      </section>
+      <ul class="tags">
+        {% for t in post.tags.all %}
+        <li><a href="{% url 'index' %}?tagid={{ t.id }}">{{ t }}</a></li>
+        {% endfor %}
+      </ul>
+      <section>
+        <h3>การติดตาม</h3>
+        <div class="striped-line"></div>
+      </section>
+      <div class="fb-page" data-href="https://www.facebook.com/zeroschools/" data-width="500" data-adapt-container-width="true" data-show-facepile="true"></div>
+    </div>
+  </div>
+</div>
+{% endblock %}

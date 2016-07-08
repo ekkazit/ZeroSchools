@@ -1,0 +1,172 @@
+{% extends "master/base.html" %}
+{% load staticfiles %}
+
+{% block feature %}
+<div class="feature"></div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <!-- load social plugins -->
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/th_TH/sdk.js#xfbml=1&version=v2.6&appId=1095075863864138";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+  <div class="row">
+    <div class="col-md-8">
+      {% if author %}
+      <section>
+        <h3>ผู้เขียน: {{ author.name }}</h3>
+        <div class="striped-line"></div>
+      </section>
+      {% endif %}
+      {% if tag %}
+      <section>
+        <h3>ป้าย: {{ tag.name }}</h3>
+        <div class="striped-line"></div>
+      </section>
+      {% endif %}
+      {% if category %}
+      <section>
+        <h3>หมวดหมู่: {{ category.name }}</h3>
+        <div class="striped-line"></div>
+      </section>
+      {% endif %}
+      {% if not author and not tag and not category %}
+      <section>
+        <h3>บทความทั้งหมด</h3>
+        <div class="striped-line"></div>
+      </section>
+      {% endif %}
+      <ul class="post">
+        {% for p in posts %}
+        <li>
+          <div class="content">
+            <div class="image">
+              {% if p.image %}
+              <img src="{% static p.image.url %}">
+              <div class="image-icon">
+                <i class="fa fa-search-plus fa-2x"></i>
+              </div>
+              {% endif %}
+            </div>
+            <div class="item">
+              <ul class="tag">
+                {% for t in p.tags.all %}
+                <li><a href="{% url 'index' %}?tagid={{ t.id }}">{{ t }}</a></li>
+                {% endfor %}
+              </ul>
+              <h4>{{ p.title }}</h4>
+              <div class="preview">
+                {{ p.preview }}
+              </div>
+            </div>
+          </div>
+          <div class="footer">
+            <div class="pull-left">
+              <span class="info"><i class="fa fa-calendar"></i> {{ p.created|date:'Y-m-d' }}</span>
+              <span class="info"><i class="fa fa-user"></i> <a href="{% url 'index' %}?authorid={{ p.author.id }}">{{ p.author.name }}</a></span>
+              <span class="info"><i class="fa fa-tag"></i> <a href="{% url 'index' %}?cateid={{ p.category.id }}">{{ p.category.name }}</a></span>
+            </div>
+            <a href="{% url 'detail' p.slug %}" class="pull-right">อ่านต่อ</a>
+          </div>
+          <hr class="separator separator-subsection">
+        </li>
+        {% endfor %}
+      </ul>
+      {% if posts.paginator.num_pages > 1 %}
+      <div class="paging">
+        <ul class="pagination">
+          {% if posts.has_previous %}
+            <li><a href="?page={{ posts.previous_page_number }}">&laquo;</a></li>
+          {% else %}
+            <li class="disabled"><a href="#">&laquo;</a></li>
+          {% endif %}
+
+          {% for num in posts.paginator.page_range %}
+            {% ifequal num posts.number %}
+              <li class="active"><a href="#">{{ num }}</a></li>
+            {% else %}
+              <li><a href="?page={{ num }}">{{ num }}</a></li>
+            {% endifequal %}
+          {% endfor %}
+
+          {% if posts.has_next %}
+            <li><a href="?page={{ posts.next_page_number }}">&raquo;</a></li>
+          {% else %}
+            <li class="disabled"><a href="#">&raquo;</a></li>
+          {% endif %}
+        <ul>
+      </div>
+      {% endif %}
+    </div>
+    <div class="col-md-4">
+      <section>
+        <h3>บทความยอดนิยม</h3>
+        <div class="striped-line"></div>
+      </section>
+      <ul class="media-list">
+        {% for p in popular_posts %}
+        <li>
+          <img src="{% static p.image.url %}">
+          <div class="item">
+            <h4><a href="#">{{ p.title }}</a></h4>
+            <div class="small">อ่าน {{ p.views }}</div>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+      <section>
+        <h3>หนังสือแนะนำ</h3>
+        <div class="striped-line"></div>
+      </section>
+      <div class="review">
+        <div class="image">
+          <img src="{% static 'img/b01.jpg' %}">
+        </div>
+        <div class="item">
+          <h4><a href="#">Programming with PHP and Laravel Framework 5.2</a></h4>
+          <div class="subtext">
+            <span class="pull-left">โดย <a href="#">Ekkasit Srisukha</a></span>
+            <div class="rating pull-right" data-score="4"></div>
+          </div>
+          <div class="preview">
+            "Lorem ipsum"
+          </div>
+          <div class="footer">
+            <span class="price pull-left">ราคา <strong>150.00</strong> บาท</span>
+            <a href="#" class="btn btn-danger pull-right">รายละเอียดหนังสือ</a>
+          </div>
+        </div>
+      </div>
+      <section>
+        <h3>หมวดหมู่</h3>
+        <div class="striped-line"></div>
+      </section>
+      <ul class="categories">
+        {% for c in categories %}
+        <li><a href="{% url 'index' %}?cateid={{ c.id }}"><i class="fa fa-folder"></i> {{ c.name }} ({{ c.post_count }})</a></li>
+        {% endfor %}
+      </ul>
+      <section>
+        <h3>ป้ายกำกับ</h3>
+        <div class="striped-line"></div>
+      </section>
+      <ul class="tags">
+        {% for t in tags %}
+        <li><a href="{% url 'index' %}?tagid={{ t.id }}">{{ t }}</a></li>
+        {% endfor %}
+      </ul>
+      <section>
+        <h3>การติดตาม</h3>
+        <div class="striped-line"></div>
+      </section>
+      <div class="fb-page" data-href="https://www.facebook.com/zeroschools/" data-width="500" data-adapt-container-width="true" data-show-facepile="true"></div>
+    </div>
+  </div>
+</div>
+{% endblock %}
